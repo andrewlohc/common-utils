@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Base64 Converter</title>
+<script>
+    function encode() {
+        try {
+            document.getElementById('base64decoder').value = btoa(document.getElementById('base64encoder').value);
+        } catch (error) {
+            document.getElementById('base64decoder').value = 'Invalid string.'
+        }
+    }
+    
+    function decode() {
+        try {
+            try {
+                btoa(atob(document.getElementById('base64decoder').value)) == document.getElementById('base64decoder').value;
+            } catch (error) {
+                document.getElementById('base64encoder').value = error.message;
+            }
+            document.getElementById('base64encoder').value = atob(document.getElementById('base64decoder').value);
+        } catch (error) {
+            document.getElementById('base64encoder').value = error.message;
+        }
+    }
+</script>
+</head>
+<body>
+
+<h1>Base64 Converter</h1>
+<p>Feel free to download this page for offline usage. (ASCII character set)</p>
+
+<label for="base64encoder">Base64 Encoder:</label>
+<br>
+<textarea id="base64encoder" name="base64encoder" rows="4" cols="50">
+</textarea>
+<br>
+<button type="button" onclick="return encode()">Encode</button>
+<br>
+
+<label for="base64decoder">Base64 Decoder:</label>
+<br>
+<textarea id="base64decoder" name="base64decoder" rows="4" cols="50">
+</textarea>
+<br>
+<button type="button" onclick="return decode()">Decode</button>
+<br>
+
+</body>
+</html>
